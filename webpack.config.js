@@ -1,11 +1,12 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HeaderWebpackPlugin = require("./webpack-plugins/header-plugin");
 
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
   output: {
-    filename: "aa.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
   },
   resolveLoader: {
@@ -24,5 +25,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new HeaderWebpackPlugin()],
+  plugins: [new HtmlWebpackPlugin(), new HeaderWebpackPlugin()],
 };
